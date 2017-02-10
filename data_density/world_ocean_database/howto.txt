@@ -1,0 +1,9 @@
+Go to
+https://www.nodc.noaa.gov/OC5/SELECT/dbsearch/dbsearch.html
+select search by geographic coordinates, date and measured variables
+
+select
+30   : 46   lat
+-5.8 : 36.5 lon
+from 1955
+tick the variable of interest in column 1 and 2

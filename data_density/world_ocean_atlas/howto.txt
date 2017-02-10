@@ -1,0 +1,11 @@
+Go to
+https://www.nodc.noaa.gov/cgi-bin/OC5/woa13/woa13.pl
+select a field (Temp, etc.)
+then enter; then select
+    CSV
+    1/4º
+    Number of observations
+    Averaged decades
+Update data links and download the annual climatology.
+
+Or query the same information through OpenDAP

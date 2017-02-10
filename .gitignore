@@ -2,14 +2,30 @@
 .Rhistory
 *.RData
 .Ruserdata
-#
+
+# OS stuff
 *Icon*
-#
+*~
+
+# Output of documentation 
 *.pdf
 *.PDF
-*.png
 *.eps
+*.png
 *.jpg
-#
+
+# Personal notes
 *.eml
 *.rtf
+
+# Some layers output by the code or drawn by hand
+consensus/frontiers.*
+consensus/frontiers_smoothed*
+consensus/regions.*
+consensus/sketches/*
+
+# Temporary downloads
+*.tar.gz
+
+# Extra information
+mayot/raw/*

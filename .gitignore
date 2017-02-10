@@ -1,4 +1,15 @@
 .Rproj.user
 .Rhistory
-.RData
+*.RData
 .Ruserdata
+#
+*Icon*
+#
+*.pdf
+*.PDF
+*.png
+*.eps
+*.jpg
+#
+*.eml
+*.rtf

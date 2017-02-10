@@ -1,0 +1,41 @@
+category,layer,description,breaks,breaks_rgb,path_from,path_to
+threat,accidents,Accidents,0.2|0.4|0.6|0.8,49 93 168|74 171 248|244 231 90|242 174 47|208 17 32,\\neptune\halpern2008_edit/mnt/storage/med_threats/threats/accidents/accidents_clean.tif,threat/accidents_clean.tif
+threat,acid,Ocean Acidification,0.250980392|0.592156863|0.725490196|0.831372549,49 93 168|74 171 248|244 231 90|242 174 47|208 17 32,\\neptune\halpern2008_edit/mnt/storage/med_threats/threats/acid/acid_laea.tif,threat/acid_laea.tif
+threat,artisinal,Artisinal Fishing,0.035049973|0.119249256|0.232837415|0.393865873,49 93 168|74 171 248|244 231 90|242 174 47|208 17 32,\\neptune\halpern2008_edit/mnt/storage/med_threats/threats/artisanal/artisanal_laea.tif,threat/artisanal_laea.tif
+habitat,beach,Beach,0.99,213 209 112,\\neptune\halpern2008_edit/mnt/storage/med_threats/backup.201010/habitats/beach.tif,habitat/beach.tif
+habitat,coral,Coral,0.99,236 89 234,\\neptune\halpern2008_edit/mnt/storage/med_threats/backup.201010/habitats/coral.tif,habitat/coral.tif
+threat,fert,Fertilizer,0.058824|0.184314|0.345098|0.596078,49 93 168|74 171 248|244 231 90|242 174 47|208 17 32,\\neptune\halpern2008_edit/mnt/storage/med_threats/threats/fert/fert_laea.tif,threat/fert_laea.tif
+threat,fish1,Fish1 (pel_lb?),0.036728466|0.127504387|0.261600671|0.4461738,49 93 168|74 171 248|244 231 90|242 174 47|208 17 32,\\neptune\halpern2008_edit/mnt/storage/med_threats/threats/fish/fish1_laea.tif,threat/fish1_laea.tif
+threat,fish2,Fish2 (pel_hb?),0.015182727|0.061402304|0.136049439|0.253284505,49 93 168|74 171 248|244 231 90|242 174 47|208 17 32,\\neptune\halpern2008_edit/mnt/storage/med_threats/threats/fish/fish2_laea.tif,threat/fish2_laea.tif
+threat,fish3,Fish3 (dem_nd_lb),0.046921492|0.149172198|0.2722361|0.430350195,49 93 168|74 171 248|244 231 90|242 174 47|208 17 32,\\neptune\halpern2008_edit/mnt/storage/med_threats/threats/fish/fish3_laea.tif,threat/fish3_laea.tif
+threat,fish4,Fish4 (dem_nd_hb),0.019668687|0.108170149|0.293626488|0.549502525,49 93 168|74 171 248|244 231 90|242 174 47|208 17 32,\\neptune\halpern2008_edit/mnt/storage/med_threats/threats/fish/fish4_laea.tif,threat/fish4_laea.tif
+threat,fish5,Fish5 (dem_d),0.01997406|0.080750744|0.222186618|0.398825055,49 93 168|74 171 248|244 231 90|242 174 47|208 17 32,\\neptune\halpern2008_edit/mnt/storage/med_threats/threats/fish/fish5_laea.tif,threat/fish5_laea.tif
+threat,flares,Flares,0.2|0.4|0.6|0.8,49 93 168|74 171 248|244 231 90|242 174 47|208 17 32,\\neptune\halpern2008_edit/mnt/storage/med_threats/threats/flares/flares_laea.tif,threat/flares_laea.tif
+habitat,h0to60,Rocky Reef,0.99,230 120 40,\\neptune\halpern2008_edit/mnt/storage/med_threats/habitats/h0to60.tif,habitat/h0to60.tif
+habitat,h2000p,Deep Hard Benthic,0.99,25 212 17,\\neptune\halpern2008_edit/mnt/storage/med_threats/habitats/h2000p.tif,habitat/h2000p.tif
+habitat,h200to2000,Hard Slope,0.99,0 0 0,\\neptune\halpern2008_edit/mnt/storage/med_threats/habitats/h200to2000.tif,habitat/h200to2000.tif
+habitat,h60to200,Hard Shelf,0.99,153 110 137,\\neptune\halpern2008_edit/mnt/storage/med_threats/habitats/h60to200.tif,habitat/h60to200.tif
+threat,hypoxia,Hypoxia,0.2|0.4|0.6|0.8,49 93 168|74 171 248|244 231 90|242 174 47|208 17 32,\\neptune\halpern2008_edit/mnt/storage/med_threats/threats/hypoxia/yearmean_medsea_oxyrisk-laea.tif,threat/yearmean_medsea_oxyrisk-laea.tif
+threat,impv,Impreviosness,0.2|0.4|0.6|0.8,49 93 168|74 171 248|244 231 90|242 174 47|208 17 32,\\neptune\halpern2008_edit/mnt/storage/med_threats/threats/impv/impv_laea.tif,threat/impv_laea.tif
+habitat,intertidal_mud,Intertidal Mud,0.99,85 87 49,\\neptune\halpern2008_edit/mnt/storage/med_threats/backup.201010/habitats/intertidal_mud.tif,habitat/intertidal_mud.tif
+threat,invasives,Invasives,0.105882|0.321569|0.521569|0.694118,49 93 168|74 171 248|244 231 90|242 174 47|208 17 32,\\neptune\halpern2008_edit/mnt/storage/med_threats/threats/invasives/invasives_combined.tif,threat/invasives_combined.tif
+habitat,kelp,Kelp,0.99,146 180 78,\\neptune\halpern2008_edit/mnt/storage/med_threats/backup.201010/habitats/kelp.tif,habitat/kelp.tif
+habitat,mangroves,Mangroves,0.99,201 122 122,\\neptune\halpern2008_edit/mnt/storage/med_threats/backup.201010/habitats/mangroves.tif,habitat/mangroves.tif
+model,model,Model,7.801|18.529|29.257|39.985|50.387,130 180 235|178 214 152|247 238 59|240 184 31|230 125 39|153 17 24,\\neptune\halpern2008_edit/mnt/storage/med_threats/models/model_all_med_annual_sst_clean.tif,model/model_all_med_annual_sst_clean.tif
+habitat,pelagic,Surface Waters,0.99,64 131 238,\\neptune\halpern2008_edit/mnt/storage/med_threats/habitats/pelagic.tif,habitat/pelagic.tif
+habitat,pelagic_deep,Deep Waters,0.99,18 18 154,\\neptune\halpern2008_edit/mnt/storage/med_threats/habitats/pelagic_deep.tif,habitat/pelagic_deep.tif
+threat,pest,Pesticides,0.078431|0.235294|0.399999|0.611765,49 93 168|74 171 248|244 231 90|242 174 47|208 17 32,\\neptune\halpern2008_edit/mnt/storage/med_threats/threats/pest/pest_laea.tif,threat/pest_laea.tif
+threat,pest_alt,Pesticides (alt?),0.078431|0.235294|0.399999|0.611765,49 93 168|74 171 248|244 231 90|242 174 47|208 17 32,\\neptune\halpern2008_edit/mnt/storage/med_threats/threats/pesticides/pest_laea.tif,threat/pest_laea.tif
+threat,pop,Population,0.108033875|0.325474937|0.503868162|0.662485695,49 93 168|74 171 248|244 231 90|242 174 47|208 17 32,\\neptune\halpern2008_edit/mnt/storage/med_threats/threats/pop/pop_laea.tif,threat/pop_laea.tif
+habitat,rocky_intertidal,Rocky Intertidal,0.99,100 100 120,\\neptune\halpern2008_edit/mnt/storage/med_threats/backup.201010/habitats/rocky_intertidal.tif,habitat/rocky_intertidal.tif
+habitat,s0to60,Shallow Soft,0.99,255 255 0,\\neptune\halpern2008_edit/mnt/storage/med_threats/habitats/s0to60.tif,habitat/s0to60.tif
+habitat,s2000p,Deep Soft Benthic,0.99,65 252 57,\\neptune\halpern2008_edit/mnt/storage/med_threats/habitats/s2000p.tif,habitat/s2000p.tif
+habitat,s200to2000,Soft Slope,0.99,200 200 0,\\neptune\halpern2008_edit/mnt/storage/med_threats/habitats/s200to2000.tif,habitat/s200to2000.tif
+habitat,s60to200,Soft Shelf,0.99,255 255 0,\\neptune\halpern2008_edit/mnt/storage/med_threats/habitats/s60to200.tif,habitat/s60to200.tif
+habitat,salt_marsh,Salt Marsh,0.99,200 200 200,\\neptune\halpern2008_edit/mnt/storage/med_threats/backup.201010/habitats/salt_marsh.tif,habitat/salt_marsh.tif
+habitat,seagrass,Seagrass,0.99,0 255 0,\\neptune\halpern2008_edit/mnt/storage/med_threats/habitats/seagrass.tif,habitat/seagrass.tif
+habitat,seamounts,Seamounts,0.99,255 0 0,\\neptune\halpern2008_edit/mnt/storage/med_threats/habitats/seamounts.tif,habitat/seamounts.tif
+threat,shipping,Commercial Shipping,0.239216|0.349019|0.478431|0.588235,49 93 168|74 171 248|244 231 90|242 174 47|208 17 32,\\neptune\halpern2008_edit/mnt/storage/med_threats/threats/shipping/shipping_laea.tif,threat/shipping_laea.tif
+threat,sst,Sea Temperature Anomalies,0.152941|0.431373|0.600000|0.721569,49 93 168|74 171 248|244 231 90|242 174 47|208 17 32,\\neptune\halpern2008_edit/mnt/storage/med_threats/threats/sst/monthly_changes_cumulative_avg-laea.tif,threat/monthly_changes_cumulative_avg-laea.tif
+habitat,suspension_reef,Suspension Reef,0.99,0 0 255,\\neptune\halpern2008_edit/mnt/storage/med_threats/backup.201010/habitats/suspension_reef.tif,habitat/suspension_reef.tif
+threat,uv,UV Radiation,0.552941|0.705882|0.807843|0.886275,49 93 168|74 171 248|244 231 90|242 174 47|208 17 32,\\neptune\halpern2008_edit/mnt/storage/med_threats/threats/uv/uv_laea.tif,threat/uv_laea.tif

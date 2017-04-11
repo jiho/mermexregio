@@ -28,8 +28,8 @@ r[["Bathymetry"]] <- list("4 min"=br4, "1min"=br1)
 message("Add frontiers")
 load("consensus.Rdata")
 r[["Frontiers congruence"]] <- list()
-r[["Frontiers congruence"]][["Count"]] <- congruence
 r[["Frontiers congruence"]][["Smoothed"]] <- mask(smoothed_congruence, med_mask)
+r[["Frontiers congruence"]][["Count"]] <- congruence
 
 # Retained regions
 message("Add regions")

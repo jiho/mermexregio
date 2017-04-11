@@ -8,6 +8,7 @@ shinyUI(
     .controls {
       font-size: 90%;
       background: rgba(255,255,255,0.5);
+      border-radius: 0px 0px 5px 5px;
       padding: 0px 10px 8px 10px;
     }
     .controls > * {

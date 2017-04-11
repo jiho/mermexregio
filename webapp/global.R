@@ -15,3 +15,4 @@ blues <- c(darker(vir_blue, 2), vir_blue, lighter(vir_blue, 1))
 
 # and congruence
 BuGnYl <- brewer_colors(6, "YlGnBu", rev=T)
+RdYlGn <- brewer_colors(6, "RdYlGn", rev=T)

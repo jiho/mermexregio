@@ -49,6 +49,29 @@ load("regions_gridded.RData")
 d <- select(d, id, lon, lat, cluster)
 r[["Raw regionalisations"]] <- dlply(d, ~id, xyz2raster, z="cluster")
 
+# Threats
+message("Add threats")
+process_threat_layer <- function(path, recenter) {
+  # read file
+  threats <- raster(paste0("threats/medthreats/", path))
+  # force centering on 18,38
+  projection(threats) <- "+proj=laea +lat_0=38 +lon_0=18 +x_0=0 +y_0=0 +datum=WGS84 +units=m +no_defs"
+  # reproject at at the same resolution as the rest
+  threats <- projectRaster(threats, res=0.1, crs=projection(med_mask))
+  # mask regions out of the med
+  threats <- mask(threats, med_mask)
+  return(threats)
+}
+# all individual layers
+l <- read.csv("threats/medthreats/layers.csv") %>% filter(category=="threat") %>% select(description, path_to)
+threats <- llply(l$path_to, process_threat_layer, .progress="text")
+# prepend the cumulative model
+threats <- c(process_threat_layer("model/model_all_med_annual_sst_clean.tif"), threats)
+# add names
+names(threats) <- c("Cumulative", l$description)
+# and store
+r[["Threats (Micheli et al 2013)"]] <- threats
+
 # Project all raster layers (to speed up display)
 message("Reproject all layers")
 r <- llply(r, function(x) {

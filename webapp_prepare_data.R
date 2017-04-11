@@ -18,8 +18,11 @@ p <- list()
 message("Add bathy")
 b <- read.table("bathy/med_4min.xyz.gz", col.names=c("lon", "lat", "z"))
 br <- xyz2raster(b, "z")
-br <- mask(br, med_mask)
-r[["Bathymetry"]] <- list("4 min"=br)
+br4 <- mask(br, med_mask)
+b <- read.table("bathy/med_1min.xyz.gz", col.names=c("lon", "lat", "z"))
+br <- xyz2raster(b, "z")
+br1 <- mask(br, med_mask)
+r[["Bathymetry"]] <- list("4 min"=br4, "1min"=br1)
 
 # Congruence
 message("Add frontiers")

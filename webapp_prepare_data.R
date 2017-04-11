@@ -47,7 +47,7 @@ p[["Any regionalisation"]] <- llply(r[["Any regionalisation"]], raster2poly)
 # Gridded regionalisations
 load("regions_gridded.RData")
 d <- select(d, id, lon, lat, cluster)
-r[["Gridded regionalisations"]] <- dlply(d, ~id, xyz2raster, z="cluster")
+r[["Raw regionalisations"]] <- dlply(d, ~id, xyz2raster, z="cluster")
 
 # Project all raster layers (to speed up display)
 message("Reproject all layers")

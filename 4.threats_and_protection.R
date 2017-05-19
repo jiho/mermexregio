@@ -131,8 +131,15 @@ protect_df <- filter(protect_df, lon > -5.34)
 protect_sp <- SpatialPointsDataFrame(coords=protect_df[,1:2], data=protect_df[,-(1:2)], proj4string=crs(s_proj))
 
 # rasterise at the same resolution as the rest
-protect <- raster(extent(protect_sp), resolution=0.1, crs=crs(protect_sp))
-protect <- rasterize(protect_sp, r, field="freq_tot", fun=max)
+r <- raster(extent(protect_sp), resolution=0.15, crs=crs(protect_sp))
+protect_existing <- rasterize(protect_sp, r, field="freq_existing", fun=max)
+protect_proposed <- rasterize(protect_sp, r, field="freq_proposed", fun=max)
+protect_tot <- rasterize(protect_sp, r, field="freq_tot", fun=max)
+
+save(protect_existing, protect_proposed, protect_tot, file="protection.RData")
+
+# choose one
+protect <- protect_tot
 
 # re-convert to data.frame for plotting
 protect_df <- data.frame(coordinates(protect), freq=getValues(protect))

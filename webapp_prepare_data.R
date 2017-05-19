@@ -1,6 +1,7 @@
 library("sp")
 library("raster")
 library("plyr")
+library("stringr")
 library("tidyverse")
 
 source("lib_plot.R")
@@ -87,13 +88,37 @@ protect <- llply(protect, mask, med_mask)
 r[["Protection areas (Micheli et al 2013)"]] <- protect
 
 
-# Project all raster layers (to speed up display)
+## Process data ---
+
+# Save all layers to files
+# write rasters as geoTIFF
+rs <- r[c("Frontiers congruence", "Retained regionalisations", "Any regionalisation", "Raw regionalisations")]
+rs <- unlist(rs)
+names(rs) <- str_replace_all(names(rs), "[ \\.\\(\\)=’']", "_")
+names(rs) <- str_replace_all(names(rs), "à", "a")
+names(rs) <- str_replace_all(names(rs), "__", "_")
+names(rs) <- str_replace_all(names(rs), "_$", "")
+l_ply(names(rs), function(x) {
+  writeRaster(rs[[x]], filename=str_c("webapp/www/", x, ".tif"), format="GTiff", overwrite=TRUE)
+}, .progress="text")
+
+# write polygons as shapefiles
+writeOGR(regions, dsn="webapp/www/", layer="Consensus_regions", driver="ESRI Shapefile", overwrite_layer=T)
+zip("webapp/www/Consensus_regions.zip", files=list.files("webapp/www/", pattern="Consensus_regions", full=T))
+writeOGR(ridges, dsn="webapp/www/", layer="Consensus_frontiers", driver="ESRI Shapefile", overwrite_layer=T)
+zip("webapp/www/Consensus_frontiers.zip", files=list.files("webapp/www/", pattern="Consensus_frontiers", full=T))
+
+
+# Project all raster layers for leaflet (to speed up display)
 message("Reproject all layers")
 r <- llply(r, function(x) {
   llply(x, function(x) {
     projectRaster(x, projectExtent(x, crs = CRS("+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs")), method="ngb")
   })
 }, .progress="text")
+
+
+## Save data ---
 
 # save data for the shiny app
 save(r, p, regions, ridges, clr, file="webapp/data.Rdata")

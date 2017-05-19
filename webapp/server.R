@@ -64,6 +64,9 @@ shinyServer(function(input, output, session) {
     } else if (input$raster_category == "Threats (Micheli et al 2013)") {
       range <- range(vals, na.rm=T)
       pal <- colorNumeric(RdYlGn, domain=range, na.color="transparent")
+    } else if (input$raster_category == "Protection areas (Micheli et al 2013)") {
+      range <- range(vals, na.rm=T)
+      pal <- colorNumeric(brewer_colors(7, "RdYlGn", rev=F)[4:7], domain=range, na.color="transparent")
     } else {
       levels <- sort(unique(vals))
       range <- NULL

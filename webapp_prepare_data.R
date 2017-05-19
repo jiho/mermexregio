@@ -72,6 +72,21 @@ names(threats) <- c("Cumulative", l$description)
 # and store
 r[["Threats (Micheli et al 2013)"]] <- threats
 
+
+# Protected areas
+message("Add protected areas")
+load("protection.RData")
+protect <- list(
+  Existing=protect_existing,
+  Proposed=protect_proposed,
+  Both=protect_tot
+)
+# remove pixels outside of Med
+protect <- llply(protect, mask, med_mask)
+# and store
+r[["Protection areas (Micheli et al 2013)"]] <- protect
+
+
 # Project all raster layers (to speed up display)
 message("Reproject all layers")
 r <- llply(r, function(x) {

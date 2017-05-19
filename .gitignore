@@ -7,7 +7,7 @@
 *Icon*
 *~
 
-# Output or documentation 
+# Output or documentation
 *.pdf
 *.PDF
 *.eps
@@ -29,5 +29,6 @@ consensus/sketches/*
 
 # Extra information
 mayot/raw/*
+webapp/www/*
 
 !webapp/www/mermex.png

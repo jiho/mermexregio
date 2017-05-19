@@ -1,5 +1,5 @@
 #
-# Read cumulative threats from Micheli et al 2013, process them and compute stats per regions
+# Read cumulative threats from Micheli et al 2013a and protection schemes from Micheli et al 2013b, process them and compute stats per regions
 #
 # (c) 2016 Jean-Olivier Irisson, GNU General Public License v3
 #
@@ -41,7 +41,7 @@ range(threats_proj_df$threats)
 ## Compute and plot stats per region ----
 
 # get final region and frontiers for plotting
-load("synthetic_regions_and_frontiers.RData")
+load("consensus.RData")
 
 # get regions info
 glance.SpatialPolygons <- function(x) {
@@ -104,3 +104,92 @@ pg <- remove_last_layer(p) + scale_fill_distiller(palette="Greys", direction=1) 
 # ggsave(pg, file="fig5-bw.png", width=3.5, height=1.8)
 ggsave(pg, file="fig5-bw.pdf", width=3.5, height=1.8)
 system("convert -density 300 fig5-bw.pdf fig5-bw.png")
+
+
+## Read protection schemes ----
+
+# read data for http://journals.plos.org/plosone/article?id=10.1371/ Fig 2 and 5
+s_existing <- readOGR("protection", layer="grid10km_inds_existing1", verbose=F)
+s_proposed <- readOGR("protection", layer="grid10km_inds_overlay5", verbose=F)
+
+# sum proposed and existing conservation plans
+s <- s_proposed
+s@data$freq_existing <- s_existing@data$freq
+s@data$freq_proposed <- s_proposed@data$freq_num
+s@data$freq_tot <- s@data$freq_existing + s@data$freq_proposed
+
+# project into our coordinate reference system
+s_proj <- spTransform(s, CRSobj=crs(med_mask))
+
+# convert into SpatialPointsDataFrame, to simplify rasterization
+protect_df <- ldply(s_proj@polygons, function(x) {x@labpt})
+names(protect_df) <- c("lon", "lat")
+protect_df <- cbind(protect_df, s_proj@data[,c("freq_existing", "freq_proposed", "freq_tot")])
+# remove anything in the atlantic
+protect_df <- filter(protect_df, lon > -5.34)
+# convert to SpDF
+protect_sp <- SpatialPointsDataFrame(coords=protect_df[,1:2], data=protect_df[,-(1:2)], proj4string=crs(s_proj))
+
+# rasterise at the same resolution as the rest
+protect <- raster(extent(protect_sp), resolution=0.1, crs=crs(protect_sp))
+protect <- rasterize(protect_sp, r, field="freq_tot", fun=max)
+
+# re-convert to data.frame for plotting
+protect_df <- data.frame(coordinates(protect), freq=getValues(protect))
+protect_df <- rename(protect_df, lon=x, lat=y)
+protect_df <- na.omit(protect_df)
+
+
+# get final region and frontiers for plotting
+load("consensus.RData")
+
+# inspect protection per region
+regions_info <- glance(regions)
+
+# extract threats per region
+per_region <- raster::extract(protect, regions)
+# and compute summary statistics
+stat_per_region <- ldply(per_region, function(x) {
+  data.frame(
+    mean=mean(x, na.rm=T),
+    sd=sd(x, na.rm=T),
+    median=median(x, na.rm=T),
+    mad=mad(x, na.rm=T)
+  )
+})
+# associate with names and other characteristics of the regions
+(stat_per_region <- cbind(select(regions_info, lon, lat, area), stat_per_region) %>% arrange(mean))
+# lon      lat     area     mean        sd median    mad
+# 1  18.975654 35.90877 2.483750 1.090909 0.2887955      1 0.0000
+# 2  18.412114 33.69915 4.935625 1.495413 0.6939349      1 0.0000
+# 3   6.648030 38.14334 8.198385 1.826923 1.4508439      1 0.0000
+# 4  33.040386 33.37509 9.557849 2.613208 1.3995660      2 1.4826
+# 5  30.964493 35.98848 2.039734 3.373626 1.1219859      3 0.0000
+# 6  17.071558 42.17324 7.188485 3.763975 2.2589815      3 2.9652
+# 7  24.499041 38.91974 2.761458 4.016260 1.1234004      4 1.4826
+# 8  12.881931 44.91081 1.221160 4.222222 0.9841511      4 1.4826
+# 9   6.348255 42.45426 5.118689 4.346320 1.6020291      4 1.4826
+# 10 11.020561 33.99404 1.314587 4.457627 0.8967765      5 1.4826
+# 11 25.667252 36.33054 4.446379 4.741117 0.9029344      5 1.4826
+
+# figure for paper
+p <- base + theme_dark(8) + map +
+  # threats
+  geom_raster(aes(fill=freq), data=protect_df) +
+  # regions
+  geom_polygon(aes(group=group), data=regions_df, colour="black", size=0.2, fill="black", alpha=0.1) +
+  # frontiers
+  geom_path(aes(group=group), data=ridges_df, size=0.4, alpha=1, colour="black", lineend="round") +
+  geom_path(aes(group=group), data=ridges_df, size=0.2, alpha=1  , colour="white", lineend="round", linetype="dashed") +
+  # scale_fill_distiller(palette="PuBuGn", direction=1) +
+  scale_fill_gradientn(colors=brewer_colors(name="RdYlGn", 7)[4:7], breaks=seq(0, 12, 2)) +
+  labs(fill="Freq. in plans") +
+  # setup
+  coastd + legend_inside()
+# ggsave(p, file="fig5.png", width=3.5, height=1.8) # dashed line incorrect
+ggsave(p, file="fig5b.pdf", width=3.5, height=1.8)
+system("convert -density 300 fig5b.pdf fig5b.png")
+pg <- remove_last_layer(p) + scale_fill_distiller(palette="Greys", direction=1) + coastl + legend_inside(text="black")
+# ggsave(pg, file="fig5-bw.png", width=3.5, height=1.8)
+ggsave(pg, file="fig5b-bw.pdf", width=3.5, height=1.8)
+system("convert -density 300 fig5b-bw.pdf fig5b-bw.png")

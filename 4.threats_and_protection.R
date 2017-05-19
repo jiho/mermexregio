@@ -14,6 +14,15 @@ library("ggplot2")
 source("lib_plot.R")
 source("lib_coastline.R")
 
+glance.SpatialPolygons <- function(x) {
+  d1 <- as.data.frame(x)
+  d2 <- ldply(x@polygons, function(x) {
+    labs <- data.frame(t(x@labpt))
+    names(labs) <- c("lon", "lat")
+    data.frame(labs, plotOrder=x@plotOrder, area=x@area)
+  })
+  cbind(d1, d2)
+}
 
 ## Read threats ----
 
@@ -44,15 +53,6 @@ range(threats_proj_df$threats)
 load("consensus.RData")
 
 # get regions info
-glance.SpatialPolygons <- function(x) {
-  d1 <- as.data.frame(x)
-  d2 <- ldply(x@polygons, function(x) {
-    labs <- data.frame(t(x@labpt))
-    names(labs) <- c("lon", "lat")
-    data.frame(labs, plotOrder=x@plotOrder, area=x@area)
-  })
-  cbind(d1, d2)
-}
 regions_info <- glance(regions)
 
 # extract threats per region

@@ -33,10 +33,12 @@ shinyUI(
       border: 1px solid #ccc;
     }
     .popover {
-      min-width:100px;
-      width:400px;
-      max-width:400px;
-      }
+      width:420px;
+      max-width:420px;
+    }
+    .popover dd {
+      margin-left: 10px;
+    }
     "
     )),
 

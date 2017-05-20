@@ -74,7 +74,7 @@ shinyUI(
         `data-content`='
         <dl>
         <dt>Synthesis</dt>
-        <dd>Consensus <a href="Concensus_regions.zip">regions</a>, <a href="Concensus_frontiers.zip">frontiers</a></dd>
+        <dd>Consensus <a href="Consensus_regions.zip">regions</a>, <a href="Consensus_frontiers.zip">frontiers</a></dd>
         <dd>Congruence <a href="Frontiers_congruence_Count.tif">raw</a> or <a href="Frontiers_congruence_Smoothed.tif">smoothed</a></dd>
 
         <dt>Retained regionalisations</dt>

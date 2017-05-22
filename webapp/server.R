@@ -19,12 +19,16 @@ shinyServer(function(input, output, session) {
   raster_layer <- reactive({
     if (!is.null(input$raster)) {
       rasters[[input$raster_category]][[input$raster]]
+    } else {
+      NULL
     }
   })
 
   poly_layer <- reactive({
     if (!is.null(input$poly)) {
       polygons[[input$poly_category]][[input$poly]]
+    } else {
+      NULL
     }
   })
 
@@ -70,17 +74,18 @@ shinyServer(function(input, output, session) {
 
   # Add base raster layer
   observe({
+    # get base raster layer
     x <- raster_layer()
-    # NB: take care of the fact that before the page is fully loaded, nothing is selected
+
+    # remove the current one
+    leafletProxy("map") %>%
+      # remove previous layer
+      removeImage(layerId="base")
+
+    # if one is selected, add it
     if (!is.null(x)) {
-      # get an appropriate colour palette
-      pal <- colorpal()
-      # add raster layer
       leafletProxy("map") %>%
-        # remove previous layer
-        removeImage(layerId="base") %>%
-        # add new one
-        addRasterImage(x, layerId="base", colors=pal$pal, project=F)
+        addRasterImage(x, layerId="base", colors=colorpal()$pal, project=F)
     }
   })
 

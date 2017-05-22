@@ -29,24 +29,18 @@ shinyServer(function(input, output, session) {
   })
 
   output$map <- renderLeaflet({
+
+    # provider_url <- switch(input$tiles,
+    #   "grey"="Esri.WorldGrayCanvas",
+    #   "dark"="CartoDB.DarkMatterNoLabels",
+    #   "watercolor"="Stamen.Watercolor"
+    # )
+
     leaflet(options=leafletOptions(minZoom=3, maxZoom=8, attributionControl=F, zoomSnap=0.25)) %>%
       # See https://leaflet-extras.github.io/leaflet-providers/preview/
-      # Funky
-      # addProviderTiles("NASAGIBS.ViirsEarthAtNight2012") %>%
-      # addProviderTiles("Stamen.Watercolor") %>%
-      # Terrain
-      # addProviderTiles("Esri.WorldPhysical") %>%
-      # addProviderTiles("Esri.WorldTerrain") %>%
-      # addProviderTiles("Esri.OceanBaseMap") %>%
-      # addProviderTiles("Acetate.terrain") %>%
-      # Neutral gray
       addProviderTiles("Esri.WorldGrayCanvas") %>%
-      # addProviderTiles("Acetate.basemap") %>%
-      # addProviderTiles("CartoDB.PositronNoLabels") %>%
-      # Dark
-      # addProviderTiles("CartoDB.DarkMatterNoLabels") %>%
-      #
-      fitBounds(lng1=-5.4, lat1=30, lng2=36.3, lat2=46)
+      # addProviderTiles(provider_url) %>%
+      fitBounds(lng1=-5.4, lat1=32, lng2=36.3, lat2=48)
       # setView(lng=15.45, lat=38, zoom=5)
   })
 

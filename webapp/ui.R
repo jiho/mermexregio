@@ -49,12 +49,10 @@ shinyUI(
       # base map layer type
       selectInput("raster_category", label="Map", choices=c("None", names(rasters)), selected="Frontiers congruence"),
       # and subsequent choices
-      uiOutput("raster"),
 
       # overlay layer type
       selectInput("poly_category", label="Frontier overlay", choices=c("None", names(polygons)), selected="None"),
       # and subsequent choices
-      uiOutput("poly"),
 
       br(),
 
@@ -63,6 +61,8 @@ shinyUI(
       # with a chose of colours
       radioButtons("colour", label="Colour", choices=c("white", "black", "red"), inline = TRUE)
     ),
+          uiOutput("raster_subcategory", class="sub")
+          uiOutput("poly_subcategory", class="sub")
 
     # advertise MerMex!
     absolutePanel(bottom = 10, left = 10,

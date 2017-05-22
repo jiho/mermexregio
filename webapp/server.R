@@ -4,14 +4,26 @@ shinyServer(function(input, output, session) {
   output$raster_subcategory <- renderUI({
     choices <- names(rasters[[input$raster_category]])
     if (!is.null(choices)) {
-      selectInput("raster", label="", choices=choices)
+      selected <- NULL
+      if (! is.null(input$raster)) {
+        if (input$raster %in% choices) {
+          selected <- input$raster
+        }
+      }
+      selectInput("raster", label=NULL, choices=choices, width="100%", selected=selected)
     }
   })
 
   output$poly_subcategory <- renderUI({
     choices <- names(polygons[[input$poly_category]])
     if (!is.null(choices)) {
-      selectInput("poly", label="", choices=choices)
+      selected <- NULL
+      if (! is.null(input$poly)) {
+        if (input$raster %in% choices) {
+          selected <- input$poly
+        }
+      }
+      selectInput("poly", label=NULL, choices=choices, width="100%", selected=selected)
     }
   })
 

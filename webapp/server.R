@@ -67,15 +67,19 @@ shinyServer(function(input, output, session) {
     if (input$raster_category == "Bathymetry") {
       range <- range(vals, na.rm=T)
       pal <- colorNumeric(blues, domain=range, na.color="transparent")
+
     } else if (input$raster_category == "Frontiers congruence") {
       range <- range(vals, na.rm=T)
       pal <- colorNumeric(BuGnYl, domain=range, na.color="transparent")
+
     } else if (input$raster_category == "Threats (Micheli et al 2013)") {
       range <- range(vals, na.rm=T)
       pal <- colorNumeric(RdYlGn, domain=range, na.color="transparent")
+
     } else if (input$raster_category == "Protection areas (Micheli et al 2013)") {
       range <- range(vals, na.rm=T)
       pal <- colorNumeric(brewer_colors(7, "RdYlGn", rev=F)[4:7], domain=range, na.color="transparent")
+
     } else {
       levels <- sort(unique(vals))
       range <- NULL

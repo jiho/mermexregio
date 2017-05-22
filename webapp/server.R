@@ -29,8 +29,7 @@ shinyServer(function(input, output, session) {
   })
 
   output$map <- renderLeaflet({
-    # TODO restrict max zoom
-    leaflet() %>%
+    leaflet(options=leafletOptions(minZoom=3, maxZoom=8, attributionControl=F, zoomSnap=0.25)) %>%
       # See https://leaflet-extras.github.io/leaflet-providers/preview/
       # Funky
       # addProviderTiles("NASAGIBS.ViirsEarthAtNight2012") %>%

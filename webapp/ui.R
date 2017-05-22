@@ -52,11 +52,16 @@ shinyUI(
     .shiny-input-container {
       min-width: 320px !important;
     }
-    /* add a bit of lee-room at the bottom still */
+    /* add a bit of space at the bottom to look cleaner */
     #data,
     #info {
       margin-bottom: 10px;
       font-size: 90%;
+    }
+    /* align options vertically */
+    #consensus-settings .shiny-options-group {
+      margin-top: 6px !important;
+      margin-bottom: 23px;
     }
 
     #data dd,
@@ -103,22 +108,22 @@ shinyUI(
 
       # Settings
       fluidRow(id="settings", class="collapse in",
-        div(class="col-md-4",
+        div(class="col-md-4", id="raster-settings",
           # base map layer type
           selectInput("raster_category", label="Background map", choices=c("None", names(rasters)), selected="Frontiers congruence", width="100%"),
           # and subsequent choices
           uiOutput("raster_subcategory", class="sub")
         ),
-        div(class="col-md-4",
+        div(class="col-md-4", id="frontiers-settings",
           # overlay layer type
           selectInput("poly_category", label="Overlay frontiers of", choices=c("None", names(polygons)), selected="None", width="100%"),
           # and subsequent choices
           uiOutput("poly_subcategory", class="sub")
         ),
-        div(class="col-md-4",
+        div(class="col-md-4", id="consensus-settings",
           checkboxGroupInput("consensus", label="Overlay consensus", choices=c("regions","frontiers"), selected = c("regions","frontiers"), inline=TRUE),
           # with a choice of colours
-          div(class="sub", radioButtons("colour", label="in", choices=c("white", "black", "red"), inline = TRUE))
+          div(class="sub", radioButtons("colour", label=NULL, choices=c("white", "black", "red"), inline = TRUE))
         )
       ),
 

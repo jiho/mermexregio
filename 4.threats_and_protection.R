@@ -108,6 +108,8 @@ system("convert -density 300 fig5-bw.pdf fig5-bw.png")
 
 ## Read protection schemes ----
 
+unzip("protection/grid10km_inds_overlay5.dbf.zip", exdir="protection")
+
 # read data for http://journals.plos.org/plosone/article?id=10.1371/ Fig 2 and 5
 s_existing <- readOGR("protection", layer="grid10km_inds_existing1", verbose=F)
 s_proposed <- readOGR("protection", layer="grid10km_inds_overlay5", verbose=F)

@@ -18,8 +18,8 @@ shinyServer(function(input, output, session) {
     choices <- names(polygons[[input$poly_category]])
     if (!is.null(choices)) {
       selected <- NULL
-      if (! is.null(input$poly)) {
-        if (input$raster %in% choices) {
+      if (!is.null(input$poly)) {
+        if (input$poly %in% choices) {
           selected <- input$poly
         }
       }

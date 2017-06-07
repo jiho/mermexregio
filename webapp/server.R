@@ -5,7 +5,7 @@ shinyServer(function(input, output, session) {
     choices <- names(rasters[[input$raster_category]])
     if (!is.null(choices)) {
       selected <- NULL
-      if (! is.null(input$raster)) {
+      if (!is.null(input$raster)) {
         if (input$raster %in% choices) {
           selected <- input$raster
         }

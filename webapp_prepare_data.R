@@ -92,15 +92,18 @@ r[["Protection areas (Micheli et al 2013)"]] <- protect
 
 # Save all layers to files
 # write rasters as geoTIFF
-rs <- r[c("Frontiers congruence", "Retained regionalisations", "Any regionalisation", "Raw regionalisations")]
+rs <- r
 rs <- unlist(rs)
-names(rs) <- str_replace_all(names(rs), "[ \\.\\(\\)=’']", "_")
+names(rs) <- str_replace_all(names(rs), "[ \\.\\(\\)=’'\\?]", "_")
 names(rs) <- str_replace_all(names(rs), "à", "a")
 names(rs) <- str_replace_all(names(rs), "__", "_")
 names(rs) <- str_replace_all(names(rs), "_$", "")
 l_ply(names(rs), function(x) {
   writeRaster(rs[[x]], filename=str_c("webapp/www/", x, ".tif"), format="GTiff", overwrite=TRUE)
 }, .progress="text")
+# joint threats and protection layers in zip files to ease download
+zip("webapp/www/Threats_Micheli_et_al_2013.zip", files=list.files("webapp/www/", pattern="Threats_Micheli_et_al_2013_", full=T))
+zip("webapp/www/Protection_areas_Micheli_et_al_2013.zip", files=list.files("webapp/www/", pattern="Protection_areas_Micheli_et_al_2013_", full=T))
 
 # write polygons as shapefiles
 writeOGR(regions, dsn="webapp/www/", layer="Consensus_regions", driver="ESRI Shapefile", overwrite_layer=T)

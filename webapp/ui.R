@@ -132,21 +132,10 @@ shinyUI(
         div(class="col-md-4",
           HTML('
             <dl>
-            <dt>Synthesis</dt>
+              <dt>Synthesis</dt>
               <dd>Consensus <a href="Consensus_regions.zip">regions</a>, <a href="Consensus_frontiers.zip">frontiers</a></dd>
-              <dd>Congruence <a href="Frontiers_congruence_Count.tif">raw</a> or <a href="Frontiers_congruence_Smoothed.tif">smoothed</a></dd>
-            <dt>Threats</dt>
-              <dd>Micheli et al. (2013) Cumulative Human Impacts on Mediterranean and Black Sea Marine Ecosystems: Assessing Current Pressures and Opportunities. <a href="https://doi.org/10.1371/journal.pone.0079889">PLoS ONE 8(12):e79889</a>. <a href="http://neptune.nceas.ucsb.edu/medthreats/">Data access</a></dd>
-
-            <dt>Protection plans</dt>
-              <dd>Micheli et al. (2013) Setting Priorities for Regional Conservation Planning in the Mediterranean Sea. <a href="https://doi.org/10.1371/journal.pone.0059038">PLoS ONE 8(4):e59038</a>.</dd>
-            </dl>
-          ')
-        ),
-        div(class="col-md-4",
-          HTML('
-            <dl>
-              <dt>Retained regionalisations</dt>
+            <dd>Congruence <a href="Frontiers_congruence_Count.tif">raw</a> or <a href="Frontiers_congruence_Smoothed.tif">smoothed</a></dd>
+            <dt>Retained regionalisations</dt>
               <dd>Spalding et al (2007)
                 <a href="Retained_regionalisations_Spalding_et_al_2007.tif">cleaned</a>,
                 <a href="Raw_regionalisations_Spalding_et_al_2007.tif">raw</a></dd>
@@ -173,7 +162,6 @@ shinyUI(
                 <a href="Raw_regionalisations_Reygondeau_et_al_2014_Ecoregions_pelagic.tif">raw</a></dd>
             </dl>'
           )
-
         ),
         div(class="col-md-4",
           HTML('
@@ -214,7 +202,20 @@ shinyUI(
                 <a href="Raw_regionalisations_Reygondeau_et_al_2014_Ecoregions_contig.tif">raw</a></dd>
             </dl>
           ')
-        )
+        ),
+        div(class="col-md-4",
+          HTML('
+            <dl>
+            <dt>Threats</dt>
+            <dd>Micheli et al. (2013) <a href="https://doi.org/10.1371/journal.pone.0079889">Cumulative Human Impacts on Mediterranean and Black Sea Marine Ecosystems: Assessing Current Pressures and Opportunities</a>. PLoS ONE 8(12):e79889. <a href="Threats_Micheli_et_al_2013.zip">data layers</a> (NB: resolution reduced compared to original data)</dd>
+
+            <dt>Protection plans</dt>
+            <dd>Micheli et al. (2013) <a href="https://doi.org/10.1371/journal.pone.0059038">Setting Priorities for Regional Conservation Planning in the Mediterranean Sea</a>. PLoS ONE 8(4):e59038. <a href="Protection_areas_Micheli_et_al_2013.zip">data layers</a> (NB: resolution reduced compared to original data)</dd>
+            <dt>Bathymetry</dt>
+            <dd>Data from <a href="http://dx.doi.org/10.7289/V5C8276M">ETOPO1</a>. <a href="Bathymetry_1min.tif">1 min</a>, <a href="Bathymetry_4min.tif">4 min</a></dd>
+            </dl>
+            ')
+          )
       ),
 
       # Info

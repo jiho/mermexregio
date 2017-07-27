@@ -7,8 +7,11 @@ shinyUI(
     }
 
     /* Unify position and appearance between leaflet and custom panels */
-    .leaflet-control-zoom {
+    .leaflet-control {
       box-shadow: none;
+    }
+    .info {
+      background: white;
     }
     #settings-panel {
       top: 10px;

@@ -101,7 +101,8 @@ shinyServer(function(input, output, session) {
     # if one is selected, add it
     if (!is.null(x)) {
       leafletProxy("map") %>%
-        addRasterImage(x, layerId="base", colors=colorpal()$pal, project=F)
+        addRasterImage(x, layerId="base", colors=colorpal()$pal, project=F) %>%
+        addLegend(position="bottomleft", pal=colorpal()$pal, values=colorpal()$range, layerId="base", opacity=1)
     }
   })
 

@@ -36,14 +36,14 @@ r[["Frontiers congruence"]][["Count"]] <- congruence
 message("Add regions")
 load("regions_retained.RData")
 d <- select(d, id, lon, lat, cluster)
-r[["Retained regionalisations"]] <- dlply(d, ~id, xyz2raster, z="cluster")
-p[["Retained regionalisations"]] <- llply(r[["Retained regionalisations"]], raster2poly)
+r[["Retained regionalisations (cleaned)"]] <- dlply(d, ~id, xyz2raster, z="cluster")
+p[["Retained regionalisations (cleaned)"]] <- llply(r[["Retained regionalisations (cleaned)"]], raster2poly)
 
 # All regionalisations
 load("regions_filtered.RData")
 d <- select(d, id, lon, lat, cluster)
-r[["Any regionalisation"]] <- dlply(d, ~id, xyz2raster, z="cluster")
-p[["Any regionalisation"]] <- llply(r[["Any regionalisation"]], raster2poly)
+r[["Cleaned regionalisations"]] <- dlply(d, ~id, xyz2raster, z="cluster")
+p[["Cleaned regionalisations"]] <- llply(r[["Cleaned regionalisations"]], raster2poly)
 
 # Gridded regionalisations
 load("regions_gridded.RData")
